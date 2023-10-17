@@ -128,6 +128,8 @@ require('lazy').setup({
     config = function()
       require("notify").setup({
         background_colour = "#000000",
+        render = "compact",
+        top_down = false,
       })
     end
   },   
