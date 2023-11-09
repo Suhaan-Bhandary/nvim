@@ -1,4 +1,4 @@
-vim.api.nvim_set_keymap("i", "jj", "<Esc>", {noremap=false})
+-- vim.api.nvim_set_keymap("i", "jj", "<Esc>", {noremap=false})
 -- twilight
 vim.api.nvim_set_keymap("n", "tw", ":Twilight<enter>", {noremap=false})
 -- buffers
@@ -37,3 +37,6 @@ vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", {noremap=tru
 vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>w<CR>", {noremap=true})
 
 vim.api.nvim_set_keymap("v", "<leader>p", "\"_dP", {noremap=true})
+
+-- Copy relative paths
+vim.api.nvim_set_keymap("n", "cp", "<cmd>let @+ = expand(\"%\")<CR>", {noremap=true})
