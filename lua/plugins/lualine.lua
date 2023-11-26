@@ -3,6 +3,7 @@ require('lualine').setup {
     icons_enabled = true,
     component_separators = '|',
     section_separators = '',
+    disabled_filetypes = { 'packer', 'NvimTree' },
   },
   sections = {
     lualine_x = {
@@ -14,7 +15,7 @@ require('lualine').setup {
     },
     lualine_a = {
       {
-        'buffers',
+        -- 'buffers',
       }
     }
   }
