@@ -214,15 +214,7 @@ require('lazy').setup({
     priority = 1000,
     opts = {},
   },
-  {
-    'stevearc/aerial.nvim',
-    opts = {},
-    -- Optional dependencies
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
-    },
-  },
+  'simrat39/symbols-outline.nvim',
   {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 
   -- Git related plugins

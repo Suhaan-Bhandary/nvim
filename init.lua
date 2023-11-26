@@ -14,6 +14,7 @@ require('plugins.nvimtree')
 require('plugins.neoformat')
 require('plugins.completion')
 require('plugins.bufferline')
-require('plugins.aerial')
+require('plugins.symbol')
+require('plugins.autocmd')
 
 -- vim: ts=8 sts=2 sw=2 et
