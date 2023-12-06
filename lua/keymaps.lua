@@ -1,3 +1,10 @@
+-- [[ Basic Keymaps ]]
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- vim.api.nvim_set_keymap("i", "jj", "<Esc>", {noremap=false})
 -- twilight
 vim.api.nvim_set_keymap("n", "tw", ":Twilight<enter>", {noremap=false})

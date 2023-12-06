@@ -39,10 +39,3 @@ vim.o.conceallevel=2
 -- spell checks
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
--- [[ Basic Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
