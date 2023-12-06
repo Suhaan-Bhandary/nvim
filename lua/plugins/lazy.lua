@@ -238,11 +238,7 @@ require('lazy').setup({
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
   'nvim-telescope/telescope-symbols.nvim',
 
-  {
-    "ThePrimeagen/harpoon",
-    lazy = false,
-    dependencies = { "nvim-lua/plenary.nvim"}
-  },
+  "ThePrimeagen/harpoon",
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable 'make' == 1 },
