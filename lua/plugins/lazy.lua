@@ -216,6 +216,7 @@ require('lazy').setup({
   },
   'simrat39/symbols-outline.nvim',
   {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+  {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
 
   -- Git related plugins
   'tpope/vim-fugitive',

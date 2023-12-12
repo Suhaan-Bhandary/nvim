@@ -47,3 +47,7 @@ vim.api.nvim_set_keymap("v", "<leader>p", "\"_dP", {noremap=true})
 
 -- Copy relative paths
 vim.api.nvim_set_keymap("n", "cp", "<cmd>let @+ = expand(\"%\")<CR>", {noremap=true})
+
+-- Code Folding
+vim.api.nvim_set_keymap("n", "-", "<cmd>foldclose<CR>", {noremap=true})
+vim.api.nvim_set_keymap("n", "+", "<cmd>foldopen<CR>", {noremap=true})
