@@ -57,7 +57,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'tailwindcss' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'tailwindcss', 'gopls' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -133,6 +133,25 @@ require('lspconfig').tsserver.setup {
     OrganizeImports = {
       organize_imports,
       description = "Organize Imports"
+    }
+  }
+}
+
+local util = require("lspconfig/util")
+
+require('lspconfig').gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"gopls"},
+  filetypes = {"go", "gomod", "gowork", "gotmpl"},
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      }
     }
   }
 }
