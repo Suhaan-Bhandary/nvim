@@ -17,5 +17,6 @@ require('plugins.bufferline')
 require('plugins.symbol')
 require('plugins.autocmd')
 require('plugins.ufo')
+require('plugins.harpoon')
 
 -- vim: ts=8 sts=2 sw=2 et
