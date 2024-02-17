@@ -1,5 +1,18 @@
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smartindent = true
+
+vim.opt.diffopt = vim.opt.diffopt + "vertical"
+
+vim.o.termguicolors = true
+
 -- Set highlight on search
 vim.o.hlsearch = true
+
+-- Line wrapping
+vim.o.wrap = false
 
 -- Make line numbers default
 vim.wo.number = true
@@ -23,18 +36,16 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
---vim.cmd [[colorscheme onedark]]
---vim.cmd.colorscheme "catppuccin"
 vim.cmd.colorscheme "tokyonight-night"
 
---vim.cmd()
+-- vim.cmd()
 vim.opt.clipboard = 'unnamedplus'
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
 -- Concealer for Neorg
-vim.o.conceallevel=2
+vim.o.conceallevel = 2
 
 -- spell checks
 vim.opt.spelllang = 'en_us'
