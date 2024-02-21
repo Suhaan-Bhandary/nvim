@@ -24,8 +24,11 @@ local plugins = { -- Theme
     dependencies = { "MunifTanjim/nui.nvim" } -- Used for the UI
 },                                            -- LSP
     { "williamboman/mason.nvim" }, { "neovim/nvim-lspconfig" }, { "williamboman/mason-lspconfig.nvim" }, { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" }, { "hrsh7th/cmp-path" }, { "hrsh7th/nvim-cmp" }, { "L3MON4D3/LuaSnip" }, { "saadparwaiz1/cmp_luasnip" },
-
+    { "hrsh7th/cmp-buffer" }, { "hrsh7th/cmp-path" }, { "hrsh7th/nvim-cmp", dependencies = { "saadparwaiz1/cmp_luasnip" } }, { "L3MON4D3/LuaSnip" }, { "saadparwaiz1/cmp_luasnip" },
+    {
+        "L3MON4D3/LuaSnip",
+        dependencies = { "rafamadriz/friendly-snippets" },
+    },
     -- Git
     { "lewis6991/gitsigns.nvim" }, {
     "tpope/vim-fugitive",
@@ -65,3 +68,5 @@ require("configs.gitsigns")
 require("configs.comment")
 require("configs.conform")
 require("configs.nvimtree")
+require("configs.tokyonight")
+require("configs.completion")

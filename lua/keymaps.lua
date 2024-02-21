@@ -20,6 +20,7 @@ vim.keymap.set("n", "<leader>w", "<c-w>")
 
 vim.keymap.set("n", "<leader>j", "<cmd>lnext<cr>");
 vim.keymap.set("n", "<leader>k", "<cmd>lprev");
+vim.keymap.set("n", "gw", "yiwwwviwpbbbviwp", { noremap = false });
 
 -- buffers
 vim.api.nvim_set_keymap("n", "tk", "<cmd>bnext<CR>", { noremap = false })
