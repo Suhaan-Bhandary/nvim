@@ -9,6 +9,7 @@ require("conform").setup({
         javascriptreact = { "prettier" },
         typescriptreact = { "prettier" },
         markdown = { "mdformat" },
+        python = { "black" },
         -- Use the "*" filetype to run formatters on all filetypes.
         ["*"] = {},
         -- Use the "_" filetype to run formatters on filetypes that don't
