@@ -6,7 +6,8 @@ vim.o.smartindent = true
 
 vim.opt.diffopt = vim.opt.diffopt + "vertical"
 
-vim.o.termguicolors = true
+-- removing the termguicolorsoption
+vim.o.termguicolors = false
 
 -- Set highlight on search
 vim.o.hlsearch = true
@@ -50,3 +51,7 @@ vim.o.conceallevel = 2
 -- spell checks
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
+
+-- netrw
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3

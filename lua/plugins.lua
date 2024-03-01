@@ -40,7 +40,8 @@ local plugins = { -- Theme
 }, { "stevearc/conform.nvim" }, {
     "numToStr/Comment.nvim",
     lazy = false
-}, { "nvim-tree/nvim-tree.lua" }, -- Helpers
+},
+    -- { "nvim-tree/nvim-tree.lua" }, -- Helpers
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -67,6 +68,6 @@ require("configs.mason")
 require("configs.gitsigns")
 require("configs.comment")
 require("configs.conform")
-require("configs.nvimtree")
+-- require("configs.nvimtree")
 require("configs.tokyonight")
 require("configs.completion")

@@ -16,7 +16,6 @@ require("conform").setup({
         ["_"] = {}
     },
     format_on_save = {
-        timeout_ms = 500,
         lsp_fallback = true
     }
 })
