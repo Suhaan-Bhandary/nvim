@@ -49,7 +49,7 @@ vim.api.nvim_set_keymap("n", "<C-W>.", ":vertical resize +10<CR>", { noremap = t
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- nvim tree
-vim.api.nvim_set_keymap("n", "<C-n>", "<cmd>Vex<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-n>", "<cmd>Vex!<CR>", { noremap = true })
 
 -- save
 vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>w<CR>", { noremap = true })
