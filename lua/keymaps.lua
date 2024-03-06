@@ -48,8 +48,12 @@ vim.api.nvim_set_keymap("n", "<C-W>.", ":vertical resize +10<CR>", { noremap = t
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- nvim tree
-vim.api.nvim_set_keymap("n", "<C-n>", "<cmd>Vex!<CR>", { noremap = true })
+-- file tree
+-- vim.api.nvim_set_keymap("n", "<C-n>", "<cmd>Vex!<CR>", { noremap = true })
+vim.keymap.set("n", "<C-n>", function()
+    vim.cmd("vsplit | wincmd l")
+    require("oil").open()
+end)
 
 -- save
 vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>w<CR>", { noremap = true })

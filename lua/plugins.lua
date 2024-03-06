@@ -6,7 +6,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = { -- Theme
+local plugins = {
+    -- Theme
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -22,26 +23,42 @@ local plugins = { -- Theme
         require("noice").setup({})
     end,
     dependencies = { "MunifTanjim/nui.nvim" } -- Used for the UI
-},                                            -- LSP
+},
+
+    -- LSP
     { "williamboman/mason.nvim" }, { "neovim/nvim-lspconfig" }, { "williamboman/mason-lspconfig.nvim" }, { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-buffer" }, { "hrsh7th/cmp-path" }, { "hrsh7th/nvim-cmp", dependencies = { "saadparwaiz1/cmp_luasnip" } }, { "L3MON4D3/LuaSnip" }, { "saadparwaiz1/cmp_luasnip" },
     {
         "L3MON4D3/LuaSnip",
         dependencies = { "rafamadriz/friendly-snippets" },
     },
+
     -- Git
     { "lewis6991/gitsigns.nvim" }, {
     "tpope/vim-fugitive",
     lazy = false
-}, -- Tools
+},
+
+    -- Tools
     { "nvim-treesitter/nvim-treesitter" }, {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" }
-}, { "stevearc/conform.nvim" }, {
+},
+    { "stevearc/conform.nvim" }, {
     "numToStr/Comment.nvim",
     lazy = false
 },
-    -- { "nvim-tree/nvim-tree.lua" }, -- Helpers
+
+    -- File Explorer
+    -- { "nvim-tree/nvim-tree.lua" },
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        -- Optional dependencies
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+
+    -- Helpers
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -68,6 +85,6 @@ require("configs.mason")
 require("configs.gitsigns")
 require("configs.comment")
 require("configs.conform")
--- require("configs.nvimtree")
+require("configs.oil")
 require("configs.tokyonight")
 require("configs.completion")
