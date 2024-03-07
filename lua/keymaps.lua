@@ -19,6 +19,9 @@ vim.keymap.set("n", "<leader>o", "<cmd>OrganizeImports<CR>")
 -- Custom
 vim.keymap.set("n", "<leader>w", "<c-w>")
 
+-- Git
+vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
+
 vim.keymap.set("n", "<leader>j", "<cmd>lnext<cr>");
 vim.keymap.set("n", "<leader>k", "<cmd>lprev");
 vim.keymap.set("n", "gw", "yiwwwviwpbbbviwp", { noremap = false });
