@@ -20,6 +20,7 @@ vim.keymap.set("n", "<leader>w", "<c-w>")
 
 -- Git
 vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
+vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk_inline<CR>")
 
 vim.keymap.set("n", "<leader>j", "<cmd>lnext<cr>");
 vim.keymap.set("n", "<leader>k", "<cmd>lprev");
