@@ -7,7 +7,6 @@ vim.keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch curr
 vim.keymap.set('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sb', telescope.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>sS', telescope.git_status, { desc = '' })
-vim.keymap.set('n', '<leader>sm', ":Telescope harpoon marks<CR>", { desc = 'Harpoon [M]arks' })
 
 -- LSP
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
