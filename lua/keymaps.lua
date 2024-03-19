@@ -15,6 +15,9 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 vim.keymap.set("n", "<leader>o", "<cmd>OrganizeImports<CR>")
 
+-- trouble
+vim.keymap.set("n", "<leader>gt", "<cmd>TroubleToggle workspace_diagnostics<CR>")
+
 -- Custom
 vim.keymap.set("n", "<leader>w", "<c-w>")
 
@@ -45,7 +48,6 @@ vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", { noremap = true })
 -- splits
 vim.api.nvim_set_keymap("n", "<C-W>,", ":vertical resize -10<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-W>.", ":vertical resize +10<CR>", { noremap = true })
-
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`

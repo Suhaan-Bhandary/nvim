@@ -33,6 +33,13 @@ local plugins = {
         dependencies = { "rafamadriz/friendly-snippets" },
     },
 
+    -- Lists LSP diagnostics
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
+    },
+
     -- Git
     { "lewis6991/gitsigns.nvim" }, {
     "tpope/vim-fugitive",
@@ -88,3 +95,4 @@ require("configs.conform")
 require("configs.oil")
 require("configs.tokyonight")
 require("configs.completion")
+require("configs.trouble")
