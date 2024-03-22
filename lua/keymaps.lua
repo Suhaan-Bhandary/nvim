@@ -72,3 +72,6 @@ vim.api.nvim_set_keymap("n", "cp", "<cmd>let @+ = expand(\"%\")<CR>", { noremap 
 -- Code Folding
 vim.api.nvim_set_keymap("n", "-", "<cmd>foldclose<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "+", "<cmd>foldopen<CR>", { noremap = true })
+
+-- undo tree
+vim.api.nvim_set_keymap("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap = true })

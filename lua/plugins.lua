@@ -75,6 +75,12 @@ local plugins = {
     -- HTML
     'mattn/emmet-vim',
     'alvan/vim-closetag',
+
+    -- Undo Tree
+    {
+        "mbbill/undotree",
+        lazy = false,
+    },
 }
 
 local opts = {
