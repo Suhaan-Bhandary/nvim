@@ -84,6 +84,13 @@ local plugins = {
         "mbbill/undotree",
         lazy = false,
     },
+
+    -- Harpoon
+    {
+        "ThePrimeagen/harpoon",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
+
 }
 
 local opts = {
@@ -105,3 +112,4 @@ require("configs.oil")
 require("configs.tokyonight")
 require("configs.completion")
 require("configs.trouble")
+require("configs.harpoon")
