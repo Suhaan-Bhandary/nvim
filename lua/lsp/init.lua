@@ -92,4 +92,6 @@ require('lspconfig').tsserver.setup {
 }
 
 require 'lsp.cmp'
+
 require 'lsp.emmet_setup'
+require 'lsp.json_setup'
