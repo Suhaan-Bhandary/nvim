@@ -74,7 +74,10 @@ local plugins = {
 
     -- HTML
     'mattn/emmet-vim',
-    'alvan/vim-closetag',
+    {
+        'alvan/vim-closetag',
+        lazy = false,
+    },
 
     -- Undo Tree
     {
