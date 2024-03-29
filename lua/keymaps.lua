@@ -81,3 +81,7 @@ vim.api.nvim_set_keymap("n", "+", "<cmd>foldopen<CR>", { noremap = true })
 
 -- undo tree
 vim.api.nvim_set_keymap("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap = true })
+
+-- Notes for each project
+vim.api.nvim_set_keymap("n", "<leader>n", "<cmd>lua require(\"notes\").ToggleNotes()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>sn", "<cmd>lua require(\"notes\").ViewAllNotes()<CR>", { noremap = true })

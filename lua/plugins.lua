@@ -108,6 +108,13 @@ local plugins = {
             end
         end,
     },
+
+    -- Custom Plugin
+    {
+        "Suhaan-Bhandary/notes.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim" }
+    },
+
 }
 
 local opts = {
