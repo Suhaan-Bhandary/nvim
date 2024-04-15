@@ -11,6 +11,7 @@ require("conform").setup({
         markdown = { "mdformat" },
         python = { "black" },
         sql = { "sqlfmt" },
+        go = { "gofmt", "goimports" },
         -- Use the "*" filetype to run formatters on all filetypes.
         ["*"] = {},
         -- Use the "_" filetype to run formatters on filetypes that don't

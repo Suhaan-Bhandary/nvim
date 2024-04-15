@@ -66,6 +66,8 @@ vim.keymap.set("n", "<C-n>", function()
     require("oil").open()
 end)
 
+vim.api.nvim_set_keymap("n", "<leader>0", "<cmd>Oil<CR>", { noremap = true })
+
 -- save
 vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>w<CR>", { noremap = true })
 

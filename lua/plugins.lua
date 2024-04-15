@@ -64,6 +64,16 @@ local plugins = {
         -- Optional dependencies
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        opts = {},
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        }
+    },
 
     -- Helpers
     {
@@ -125,6 +135,7 @@ local opts = {
 
 require("lazy").setup(plugins, opts)
 
+
 require("configs.lualine")
 require("configs.treesitter")
 require("configs.telescope")
@@ -137,3 +148,4 @@ require("configs.tokyonight")
 require("configs.completion")
 require("configs.trouble")
 require("configs.harpoon")
+require("configs.neotree")
