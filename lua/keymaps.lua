@@ -88,3 +88,16 @@ vim.api.nvim_set_keymap("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap =
 -- Notes for each project
 vim.api.nvim_set_keymap("n", "<leader>n", "<cmd>lua require(\"notes\").ToggleNotes()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>sn", "<cmd>lua require(\"notes\").ViewAllNotes()<CR>", { noremap = true })
+
+-- c++ compile
+vim.api.nvim_set_keymap(
+    "n", "<C-b>",
+    "<cmd>!g++ -fsanitize=address -std=c++17 -DONPC -O2 % &> output.txt && timeout 4s ./a.out < input.txt &> output.txt <CR>",
+    { noremap = true }
+)
+
+vim.api.nvim_set_keymap(
+    "n", "<C-S-b>",
+    "<cmd>!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 % &> output.txt && timeout 4s ./a.out < input.txt &> output.txt <CR>",
+    { noremap = true }
+)
