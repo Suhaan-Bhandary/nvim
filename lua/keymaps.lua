@@ -98,6 +98,6 @@ vim.api.nvim_set_keymap(
 
 vim.api.nvim_set_keymap(
     "n", "<C-S-b>",
-    "<cmd>!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 % &> output.txt && timeout 4s ./a.out < input.txt &> output.txt <CR>",
+    "<cmd>!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 % &> output.txt && timeout 4s ./a.out < input.txt &> output.txt <CR> && test -f .clang-format && echo -e \"BasedOnStyle: Google\nIndentWidth: 4\" > .clang-format",
     { noremap = true }
 )
