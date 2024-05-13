@@ -48,8 +48,6 @@ vim.api.nvim_set_keymap("n", "QQ", ":q!<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "WW", ":w!<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "E", "$", { noremap = false })
 vim.api.nvim_set_keymap("n", "B", "^", { noremap = false })
-vim.api.nvim_set_keymap("n", "TT", ":TransparentToggle<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "st", ":TodoTelescope<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", { noremap = true })
 
 -- splits
@@ -88,16 +86,3 @@ vim.api.nvim_set_keymap("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { noremap =
 -- Notes for each project
 vim.api.nvim_set_keymap("n", "<leader>n", "<cmd>lua require(\"notes\").ToggleNotes()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>sn", "<cmd>lua require(\"notes\").ViewAllNotes()<CR>", { noremap = true })
-
--- c++ compile
-vim.api.nvim_set_keymap(
-    "n", "<C-b>",
-    "<cmd>!g++ -fsanitize=address -std=c++17 -DONPC -O2 % &> output.txt && timeout 4s ./a.out < input.txt &> output.txt <CR>",
-    { noremap = true }
-)
-
-vim.api.nvim_set_keymap(
-    "n", "<C-S-b>",
-    "<cmd>!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 % &> output.txt && timeout 4s ./a.out < input.txt &> output.txt <CR> && test -f .clang-format && echo -e \"BasedOnStyle: Google\nIndentWidth: 4\" > .clang-format",
-    { noremap = true }
-)
