@@ -141,6 +141,10 @@ local plugins = {
         dependencies = { "nvim-telescope/telescope.nvim" }
     },
 
+    {
+        "sindrets/diffview.nvim",
+        lazy = false,
+    },
 }
 
 local opts = {
