@@ -4,9 +4,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local servers = require 'lsp.servers'
 local mason_lspconfig = require 'mason-lspconfig'
 
-mason_lspconfig.setup {
-    ensure_installed = vim.tbl_keys(servers),
-}
+mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers) }
 
 mason_lspconfig.setup_handlers {
     function(server_name)
@@ -80,27 +78,7 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
--- Custom Organize Imports Command
-local function organize_imports()
-    local params = {
-        command = "_typescript.organizeImports",
-        arguments = { vim.api.nvim_buf_get_name(0) },
-        title = ""
-    }
-    vim.lsp.buf.execute_command(params)
-end
-
-require('lspconfig').tsserver.setup {
-    capabilities = capabilities,
-    commands = {
-        OrganizeImports = {
-            organize_imports,
-            description = "Organize Imports"
-        }
-    }
-}
-
 require 'lsp.cmp'
-
 require 'lsp.emmet_setup'
 require 'lsp.json_setup'
+require 'lsp.ts_server'

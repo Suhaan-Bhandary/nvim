@@ -1,8 +1,38 @@
+-- harpoon
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+vim.keymap.set("n", "<leader>ht", mark.add_file)
+vim.keymap.set("n", "<leader>hp", ui.toggle_quick_menu)
+
+for i = 1, 5, 1 do
+    vim.keymap.set("n", "<leader>" .. i, function() ui.nav_file(i) end)
+end
+
+-- Format save
+vim.api.nvim_create_user_command("Format", function(args)
+    local range = nil
+    if args.count ~= -1 then
+        local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+        range = {
+            start = { args.line1, 0 },
+            ["end"] = { args.line2, end_line:len() },
+        }
+    end
+    require("conform").format({ async = true, lsp_format = "fallback", range = range })
+end, { range = true })
+
+vim.keymap.set("n", "<leader>o", "<cmd>OrganizeImports<CR>")
+
 -- movement
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- Moving lines
+vim.keymap.set("v", "J", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":move '<-2<CR>gv=gv")
 
 -- Telescope
 local telescope = require("telescope.builtin")
@@ -19,12 +49,11 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
-vim.keymap.set("n", "<leader>o", "<cmd>OrganizeImports<CR>")
 
 -- trouble
 vim.keymap.set("n", "<leader>gt", "<cmd>TroubleToggle workspace_diagnostics<CR>")
 
--- Custom
+-- Can be used with hjkl to change panes
 vim.keymap.set("n", "<leader>w", "<c-w>")
 
 -- Git
@@ -34,8 +63,6 @@ vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk_inline<CR>")
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<cr>zt");
 vim.keymap.set("n", "<leader>k", "<cmd>cpre<cr>zt");
 
-vim.keymap.set("n", "gw", "yiwwwviwpbbbviwp", { noremap = false });
-
 -- buffers
 vim.api.nvim_set_keymap("n", "tk", "<cmd>bnext<CR>", { noremap = false })
 vim.api.nvim_set_keymap("n", "tj", "<cmd>bprev<CR>", { noremap = false })
@@ -44,15 +71,10 @@ vim.api.nvim_set_keymap("n", "tl", "<cmd>blast<CR>", { noremap = false })
 vim.api.nvim_set_keymap("n", "td", "<cmd>bdelete<CR>", { noremap = false })
 
 -- files
-vim.api.nvim_set_keymap("n", "QQ", ":q!<enter>", { noremap = false })
-vim.api.nvim_set_keymap("n", "WW", ":w!<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "E", "$", { noremap = false })
 vim.api.nvim_set_keymap("n", "B", "^", { noremap = false })
-vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", { noremap = true })
-
--- splits
-vim.api.nvim_set_keymap("n", "<C-W>,", ":vertical resize -10<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-W>.", ":vertical resize +10<CR>", { noremap = true })
+vim.api.nvim_set_keymap("v", "E", "$", { noremap = false })
+vim.api.nvim_set_keymap("v", "B", "^", { noremap = false })
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`

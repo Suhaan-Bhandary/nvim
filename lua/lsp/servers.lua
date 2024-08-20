@@ -1,6 +1,7 @@
 return {
     tsserver = {},
     eslint = {},
+    emmet_ls={},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
