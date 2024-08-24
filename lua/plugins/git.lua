@@ -45,4 +45,8 @@ return {
         "sindrets/diffview.nvim",
         lazy = false,
     },
+    {
+        "https://tpope.io/vim/fugitive.git",
+        lazy = false,
+    },
 }
