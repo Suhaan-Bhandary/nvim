@@ -19,8 +19,8 @@ require("tokyonight").setup({
         hl.TelescopeResultsTitle = { fg = colors.mantle }
         hl.TelescopePreviewTitle = { bg = colors.mantle }
     end,
-
 })
 
 -- Color scheme
 vim.cmd([[colorscheme tokyonight-night]])
+vim.cmd("highlight Folded guifg=NONE guibg=#1c1c1c gui=NONE")
