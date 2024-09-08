@@ -11,7 +11,7 @@ local function organize_imports()
     vim.lsp.buf.execute_command(params)
 end
 
-require('lspconfig').tsserver.setup {
+require('lspconfig').ts_ls.setup {
     capabilities = capabilities,
     commands = {
         OrganizeImports = {
