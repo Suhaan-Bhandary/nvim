@@ -1,5 +1,5 @@
 return {
-    tsserver = {},
+    ts_ls = {},
     eslint = {},
     emmet_ls={},
 	lua_ls = {

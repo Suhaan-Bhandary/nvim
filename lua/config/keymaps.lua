@@ -2,6 +2,9 @@
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
+-- black hole for cutting
+vim.keymap.set("n", "x", '"_x')
+
 vim.keymap.set("n", "<leader>ht", mark.add_file)
 vim.keymap.set("n", "<leader>hp", ui.toggle_quick_menu)
 
@@ -112,3 +115,6 @@ vim.api.nvim_set_keymap("n", "<leader>sn", "<cmd>lua require(\"notes\").ViewAllN
 -- ufo
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+-- cmp
+vim.keymap.set("n", "<leader>tc", "<cmd>lua vim.g.cmpEnabled = not vim.g.cmpEnabled<CR>", { desc = "toggle nvim-cmp" })

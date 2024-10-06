@@ -14,6 +14,7 @@ return {
             python = { "black" },
             sql = { "sqlfmt" },
             go = { "gofmt", "goimports" },
+            cpp = { "clang-format" },
 
             -- Use the "*" filetype to run formatters on all filetypes.
             ["*"] = {},
