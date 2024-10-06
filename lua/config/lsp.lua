@@ -3,6 +3,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local servers = require 'lsp.servers'
 local mason_lspconfig = require 'mason-lspconfig'
+local telescope_builtin = require 'telescope.builtin'
 
 mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers) }
 
@@ -40,14 +41,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-        vim.keymap.set('n', 'gr',
-            function()
-                require('telescope.builtin').lsp_references()
-            end,
-            { noremap = true, silent = true }
-        )
-
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 
         local nmap = function(keys, func, desc)
             if desc then
@@ -56,8 +49,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
             vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
         end
-        nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-        nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+
+        vim.keymap.set("n", "gi", telescope_builtin.lsp_implementations, { noremap = true, silent = true })
+        vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { noremap = true, silent = true })
+
+        nmap('<leader>ds', telescope_builtin.lsp_document_symbols, '[D]ocument [S]ymbols')
+        nmap('<leader>ws', telescope_builtin.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
         vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)

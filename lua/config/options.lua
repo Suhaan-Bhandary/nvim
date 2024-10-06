@@ -5,10 +5,16 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
+vim.opt.title = true
 vim.opt.diffopt = vim.opt.diffopt + "vertical"
 
 -- Removes cmd when not in use
 vim.opt.cmdheight = 0
+
+-- Removes status line
+vim.opt.laststatus = 0
+
+vim.opt.showcmd = true
 
 -- Terminal Colors
 vim.opt.termguicolors = true
@@ -62,7 +68,24 @@ vim.g.netrw_liststyle = 3
 vim.opt.fillchars = "diff: ,fold: "
 
 -- ufo options
-vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldcolumn = '0' -- '0' is not bad
 vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+
+-- allow backspace
+vim.opt.backspace = {
+    "start",
+    "eol",
+    "indent"
+}
+
+-- Searching
+vim.opt.path:append({ "**" })
+vim.opt.wildignore:append({ "*/node_modules/*" })
+
+-- Split
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitkeep = "cursor"
+

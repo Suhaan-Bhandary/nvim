@@ -58,7 +58,12 @@ local format_function = function(_, vim_item)
     return vim_item
 end
 
+-- setting a global variable for cmp
+vim.g.cmpEnabled = false
 cmp.setup({
+    enabled = function()
+        return vim.g.cmpEnabled
+    end,
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)

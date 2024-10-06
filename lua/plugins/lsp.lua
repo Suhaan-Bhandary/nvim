@@ -36,5 +36,5 @@ return {
             position = "right",
             width = 40,
         },
-    }
+    },
 }

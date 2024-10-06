@@ -2,6 +2,9 @@
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
+-- black hole for cutting
+vim.keymap.set("n", "x", '"_x')
+
 vim.keymap.set("n", "<leader>ht", mark.add_file)
 vim.keymap.set("n", "<leader>hp", ui.toggle_quick_menu)
 
@@ -96,7 +99,13 @@ vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>w<CR>", { noremap = true })
 vim.api.nvim_set_keymap("v", "<leader>p", "\"_dP", { noremap = true })
 
 -- Copy relative paths
-vim.api.nvim_set_keymap("n", "cp", "<cmd>let @+ = expand(\"%\")<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "cp", ":call setreg('+', expand('%:.') .. ':' .. line('.'))<CR>", { noremap = true })
+
+-- replace commands
+vim.api.nvim_set_keymap("x", "<leader>rk", ":s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>", { silent = false })
+vim.api.nvim_set_keymap("n", "<leader>rk", ":s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>", { silent = false })
+vim.api.nvim_set_keymap("v", "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>', { silent = false })
+vim.api.nvim_set_keymap("n", "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gcI<Left><Left><Left><Left>", { silent = false })
 
 -- Code Folding
 vim.api.nvim_set_keymap("n", "-", "<cmd>foldclose<CR>", { noremap = true })
@@ -112,3 +121,6 @@ vim.api.nvim_set_keymap("n", "<leader>sn", "<cmd>lua require(\"notes\").ViewAllN
 -- ufo
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+-- cmp
+vim.keymap.set("n", "<leader>tc", "<cmd>lua vim.g.cmpEnabled = not vim.g.cmpEnabled<CR>", { desc = "toggle nvim-cmp" })
