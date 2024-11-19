@@ -102,8 +102,10 @@ vim.api.nvim_set_keymap("v", "<leader>p", "\"_dP", { noremap = true })
 vim.api.nvim_set_keymap("n", "cp", ":call setreg('+', expand('%:.') .. ':' .. line('.'))<CR>", { noremap = true })
 
 -- replace commands
-vim.api.nvim_set_keymap("x", "<leader>rk", ":s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>", { silent = false })
-vim.api.nvim_set_keymap("n", "<leader>rk", ":s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>", { silent = false })
+vim.api.nvim_set_keymap("x", "<leader>rk", ":s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>",
+    { silent = false })
+vim.api.nvim_set_keymap("n", "<leader>rk", ":s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>",
+    { silent = false })
 vim.api.nvim_set_keymap("v", "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>', { silent = false })
 vim.api.nvim_set_keymap("n", "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gcI<Left><Left><Left><Left>", { silent = false })
 
@@ -124,3 +126,21 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
 -- cmp
 vim.keymap.set("n", "<leader>tc", "<cmd>lua vim.g.cmpEnabled = not vim.g.cmpEnabled<CR>", { desc = "toggle nvim-cmp" })
+
+-- global marks
+local keymap_set = require("utilities").keymap_set
+
+local prefixes = "m'"
+local letters = "abcdefghijklmnopqrstuvwxyz"
+for i = 1, #prefixes do
+    local prefix = prefixes:sub(i, i)
+    for j = 1, #letters do
+        local lower_letter = letters:sub(j, j)
+        local upper_letter = string.upper(lower_letter)
+        keymap_set({ "n", "v" }, prefix .. lower_letter, prefix .. upper_letter, "Mark " .. upper_letter)
+    end
+end
+
+-- visual indents
+keymap_set("v", "<", "<gv", "Indent left")
+keymap_set("v", ">", ">gv", "Indent right")
