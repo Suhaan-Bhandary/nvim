@@ -145,3 +145,23 @@ end
 -- visual indents
 keymap_set("v", "<", "<gv", "Indent left")
 keymap_set("v", ">", ">gv", "Indent right")
+
+-- Terminal
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
+  callback = function()
+    vim.keymap.set('n', '<leader>tt', "<cmd>bd!<CR>", { noremap = true, buffer = true })
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+    vim.opt_local.spell = false
+  end,
+})
+
+vim.keymap.set("n", "<space>to", function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 15)
+end)

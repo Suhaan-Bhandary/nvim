@@ -11,3 +11,4 @@ mysql
 EnduserDeviceCreatedAt
 enduser
 decodeUpdateEnduserRequest
+Middleware
