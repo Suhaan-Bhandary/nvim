@@ -1,63 +1,6 @@
 -- Set up nvim-cmp.
 local cmp = require("cmp")
 
-local lsp_symbols = {
-    Namespace = "󰌗",
-    Text = "󰉿",
-    Method = "󰆧",
-    Function = "󰆧",
-    Constructor = "",
-    Field = "󰜢",
-    Variable = "󰀫",
-    Class = "󰠱",
-    Interface = "",
-    Module = "",
-    Property = "󰜢",
-    Unit = "󰑭",
-    Value = "󰎠",
-    Enum = "",
-    Keyword = "󰌋",
-    Snippet = "",
-    Color = "󰏘",
-    File = "󰈚",
-    Reference = "󰈇",
-    Folder = "󰉋",
-    EnumMember = "",
-    Constant = "󰏿",
-    Struct = "󰙅",
-    Event = "",
-    Operator = "󰆕",
-    TypeParameter = "󰊄",
-    Table = "",
-    Object = "󰅩",
-    Tag = "",
-    Array = "[]",
-    Boolean = "",
-    Number = "",
-    Null = "󰟢",
-    String = "󰉿",
-    Calendar = "",
-    Watch = "󰥔",
-    Package = "",
-    Copilot = "",
-    Codeium = "",
-    TabNine = "",
-}
-
-local MIN_LABEL_WIDTH = 30
-
-local format_function = function(_, vim_item)
-    vim_item.kind = string.format("%s  %s", lsp_symbols[vim_item.kind], vim_item.kind)
-
-    local label = vim_item.abbr
-    if string.len(label) < MIN_LABEL_WIDTH then
-        local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
-        vim_item.abbr = label .. padding
-    end
-
-    return vim_item
-end
-
 -- setting a global variable for cmp
 vim.g.cmpEnabled = false
 cmp.setup({
@@ -105,7 +48,18 @@ cmp.setup({
         end,
     }),
     formatting = {
-        format = format_function,
+        format = function(entry, vim_item)
+            local highlights_info = require("colorful-menu").cmp_highlights(entry)
+
+            -- if highlight_info==nil, which means missing ts parser, let's fallback to use default `vim_item.abbr`.
+            -- What this plugin offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
+            if highlights_info ~= nil then
+                vim_item.abbr_hl_group = highlights_info.highlights
+                vim_item.abbr = highlights_info.text
+            end
+
+            return vim_item
+        end,
     },
     sources = cmp.config.sources(
         {
