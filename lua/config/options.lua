@@ -51,7 +51,7 @@ vim.wo.signcolumn = 'yes'
 vim.opt.clipboard = 'unnamedplus'
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = { "menuone", "noselect" }
 
 -- Concealer for Neorg
 vim.opt.conceallevel = 2
@@ -89,3 +89,6 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.splitkeep = "cursor"
 
+-- Scroll height
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 16
