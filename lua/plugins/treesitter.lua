@@ -3,7 +3,20 @@ return {
     lazy = false,
     init = function()
         require 'nvim-treesitter.configs'.setup {
-            ensure_installed = { "lua", "go", "vimdoc"},
+            ensure_installed = {
+                "lua",
+                "go",
+                "vimdoc",
+                "vim",
+                "c",
+                "cpp",
+                "javascript",
+                "typescript",
+                "css",
+                "json",
+                "sql",
+                "html",
+            },
             sync_install = false,
             auto_install = true,
             highlight = {
