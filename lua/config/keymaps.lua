@@ -2,6 +2,9 @@
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
+-- copying entire function block
+vim.api.nvim_set_keymap("n", "YY", "yVa}", { noremap = false })
+
 -- black hole for cutting
 vim.keymap.set("n", "x", '"_x')
 
@@ -109,6 +112,10 @@ vim.api.nvim_set_keymap("n", "<leader>rk", ":s/\\(.*\\)/\\1<left><left><left><le
     { silent = false })
 vim.api.nvim_set_keymap("v", "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>', { silent = false })
 vim.api.nvim_set_keymap("n", "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gcI<Left><Left><Left><Left>", { silent = false })
+
+-- search
+vim.keymap.set('x', '/', '<Esc>/\\%V')
+vim.keymap.set('x', 'ss', [[:s/\%V]])
 
 -- Code Folding
 vim.api.nvim_set_keymap("n", "-", "<cmd>foldclose<CR>", { noremap = true })
