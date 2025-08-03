@@ -90,5 +90,5 @@ vim.opt.splitright = true
 vim.opt.splitkeep = "cursor"
 
 -- Scroll height
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 16
+-- vim.opt.scrolloff = 8
+-- vim.opt.sidescrolloff = 16
