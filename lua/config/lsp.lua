@@ -1,11 +1,23 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local servers = require 'lsp.servers'
 local mason_lspconfig = require 'mason-lspconfig'
 local telescope_builtin = require 'telescope.builtin'
 
-mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers) }
+mason_lspconfig.setup {
+    ensure_installed = {
+        "clangd",
+        "cssls",
+        "cssmodules_ls",
+        "emmet_ls",
+        "eslint",
+        "gopls",
+        "jsonls",
+        "lua_ls",
+        "sqlls",
+        "ts_ls",
+    },
+}
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
