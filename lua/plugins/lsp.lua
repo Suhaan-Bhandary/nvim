@@ -1,9 +1,7 @@
 return {
     {
-        "williamboman/mason.nvim",
-        init = function()
-            require('mason').setup()
-        end
+        "mason-org/mason.nvim",
+        opts = {}
     },
     { "hrsh7th/cmp-path" },
     { "hrsh7th/cmp-buffer" },
@@ -11,10 +9,9 @@ return {
     { "neovim/nvim-lspconfig" },
     { "saadparwaiz1/cmp_luasnip" },
     {
-        "williamboman/mason-lspconfig.nvim",
-        init = function()
-            require('mason-lspconfig').setup()
-        end
+        "mason-org/mason-lspconfig.nvim",
+	dependencies = {'neovim/nvim-lspconfig'},
+	opts = {}
     },
     {
         "hrsh7th/nvim-cmp",

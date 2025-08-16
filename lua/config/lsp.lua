@@ -7,21 +7,6 @@ local telescope_builtin = require 'telescope.builtin'
 
 mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers) }
 
-mason_lspconfig.setup_handlers {
-    function(server_name)
-        if server_name == "tsserver" then
-            server_name = "ts_ls"
-        end
-
-        local lspconfig = require('lspconfig')
-        lspconfig[server_name].setup {
-            capabilities = capabilities,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-        }
-    end,
-}
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
