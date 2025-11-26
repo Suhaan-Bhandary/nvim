@@ -1,25 +1,37 @@
-require("tokyonight").setup({
-    style = "night",
+require("tokyonight").setup {
+    style = "night", -- other options: "storm", "moon", "day"
+    light_style = "day",
 
-    -- Telescope
-    on_highlights = function(hl, colors)
-        hl.TelescopeMatching = { fg = colors.flamingo }
-        hl.TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true }
+    transparent = false,  -- true will disable setting the background color
+    terminal_colors = true, -- configure terminal colors
 
-        hl.TelescopePromptPrefix = { bg = colors.surface0 }
-        hl.TelescopePromptNormal = { bg = colors.surface0 }
-        hl.TelescopeResultsNormal = { bg = colors.mantle }
-        hl.TelescopePreviewNormal = { bg = colors.mantle }
+    styles = {
+        comments  = { italic = true },
+        keywords  = { italic = true },
+        functions = {},
+        variables = {},
+        sidebars  = "dark", -- style for sidebar-like windows: qf, help, etc.
+        floats    = "dark", -- style for floating windows
+    },
 
-        hl.TelescopePromptBorder = { bg = colors.surface0, fg = "#7aa2f7" }
-        hl.TelescopeResultsBorder = { bg = colors.mantle, fg = "#7aa2f7" }
-        hl.TelescopePreviewBorder = { bg = colors.mantle, fg = "#7aa2f7" }
+    sidebars = { "qf", "help", "packer", "vista_kind" }, -- add more if you use more sidebar-like windows
+    day_brightness = 0.3,                              -- adjust the brightness for day style (if you use it)
 
-        hl.TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle }
-        hl.TelescopeResultsTitle = { fg = colors.mantle }
-        hl.TelescopePreviewTitle = { bg = colors.mantle }
+    hide_inactive_statusline = false,
+    dim_inactive = false, -- dim inactive windows (good for focus)
+    lualine_bold = false,
+
+    on_colors = function(colors)
+        colors.fg_gutter = "#5e81ac" -- custom line-number gutter colour
     end,
-})
+
+    on_highlights = function(hl, colors)
+        -- Example: tweak folded text for better visibility
+        hl.Folded = { fg = colors.comment, bg = colors.surface0 }
+        -- Example: change CursorLineNr
+        hl.CursorLineNr = { fg = colors.orange }
+    end,
+}
 
 -- Color scheme
 vim.cmd([[colorscheme tokyonight-night]])

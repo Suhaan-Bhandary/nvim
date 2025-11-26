@@ -1,8 +1,7 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local mason_lspconfig = require 'mason-lspconfig'
-local telescope_builtin = require 'telescope.builtin'
+local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup {
     ensure_installed = {
@@ -21,40 +20,31 @@ mason_lspconfig.setup {
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
+local picker = require("snacks.picker")
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+        local buf = ev.buf
+        vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf }
+        local opts = { buffer = buf }
+
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-
-        local nmap = function(keys, func, desc)
-            if desc then
-                desc = 'LSP: ' .. desc
-            end
-
-            vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-        end
-
-        vim.keymap.set("n", "gi", telescope_builtin.lsp_implementations, { noremap = true, silent = true })
-        vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { noremap = true, silent = true })
-
-        nmap('<leader>ds', telescope_builtin.lsp_document_symbols, '[D]ocument [S]ymbols')
-        nmap('<leader>ws', telescope_builtin.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
         vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+
+        -- Snacks picker wrappers
+        vim.keymap.set("n", "gi", function() picker.lsp_implementations() end, { buffer = buf, silent = true })
+        vim.keymap.set("n", "gr", function() picker.lsp_references() end, { buffer = buf, silent = true })
+        vim.keymap.set("n", "<leader>ds", function() picker.lsp_symbols() end,
+            { buffer = buf, desc = "[D]ocument [S]ymbols" })
+        vim.keymap.set("n", "<leader>ws", function() picker.lsp_workspace_symbols() end,
+            { buffer = buf, desc = "[W]orkspace [S]ymbols" })
     end,
 })
 
@@ -80,3 +70,4 @@ require 'lsp.cmp'
 require 'lsp.emmet_setup'
 require 'lsp.json_setup'
 require 'lsp.ts_server'
+require 'lsp.lua_ls'

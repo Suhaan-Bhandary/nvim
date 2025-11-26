@@ -40,16 +40,16 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "J", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":move '<-2<CR>gv=gv")
 
--- Telescope
-local telescope = require("telescope.builtin")
+-- Snacks picker
+local picker = require("snacks.picker")
 
-vim.keymap.set('n', '<leader>sf', telescope.find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sm', telescope.marks, { desc = '[S]earch [M]arks' })
-vim.keymap.set('n', '<leader>sh', telescope.help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sb', telescope.buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>sS', telescope.git_status, { desc = '' })
+vim.keymap.set("n", "<leader>sf", picker.files, { desc = "[S]earch [F]iles" })
+vim.keymap.set("n", "<leader>sm", picker.marks, { desc = "[S]earch [M]arks" })
+vim.keymap.set("n", "<leader>sh", picker.help, { desc = "[S]earch [H]elp" })
+vim.keymap.set("n", "<leader>sw", picker.grep_word, { desc = "[S]earch current [W]ord" })
+vim.keymap.set("n", "<leader>sg", picker.grep, { desc = "[S]earch by [G]rep" })
+vim.keymap.set("n", "<leader>sb", picker.buffers, { desc = "[ ] Find existing buffers" })
+vim.keymap.set("n", "<leader>sS", picker.git_status, { desc = "" })
 
 -- LSP
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
@@ -157,18 +157,18 @@ keymap_set("v", ">", ">gv", "Indent right")
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
-  callback = function()
-    vim.keymap.set('n', '<leader>tt', "<cmd>bd!<CR>", { noremap = true, buffer = true })
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-    vim.opt_local.spell = false
-  end,
+    group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
+    callback = function()
+        vim.keymap.set('n', '<leader>tt', "<cmd>bd!<CR>", { noremap = true, buffer = true })
+        vim.opt.number = false
+        vim.opt.relativenumber = false
+        vim.opt_local.spell = false
+    end,
 })
 
 vim.keymap.set("n", "<space>to", function()
-  vim.cmd.vnew()
-  vim.cmd.term()
-  vim.cmd.wincmd("J")
-  vim.api.nvim_win_set_height(0, 15)
+    vim.cmd.vnew()
+    vim.cmd.term()
+    vim.cmd.wincmd("J")
+    vim.api.nvim_win_set_height(0, 15)
 end)
