@@ -29,7 +29,7 @@ return {
                                         globalstatus = true,
                                         component_separators = '|',
                                         section_separators = '',
-                                        disabled_filetypes = { 'packer', 'NvimTree', 'Telescope', 'terminal' }
+                                        disabled_filetypes = { 'packer', 'NvimTree', 'terminal' }
                                 },
                                 sections = {
                                         lualine_x = { {
